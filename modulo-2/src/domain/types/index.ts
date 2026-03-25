@@ -5,6 +5,7 @@ interface Asignatura {
     profesor: string;
 }
 
+
 interface Estudiante {
     readonly id: string;
     nombre: string;
@@ -30,3 +31,15 @@ interface MatriculaFinalizada {
 }
 
 type EstadoMatricula = MatriculaActiva | MatriculaSuspendida | MatriculaFinalizada;
+
+
+function generarReporte(estado: EstadoMatricula): string {
+    switch (estado.tipo) {
+        case "ACTIVA":
+            return `Matrícula activa con ${estado.asignaturas.length} asignaturas`;
+        case "SUSPENDIDA":
+            return `Matrícula suspendida por: ${estado.motivoSuspension}`;
+        case "FINALIZADA":
+            return `Matrícula finalizada con nota media: ${estado.notaMedia}`;
+    }
+}
