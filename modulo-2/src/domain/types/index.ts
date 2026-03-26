@@ -41,5 +41,8 @@ function generarReporte(estado: EstadoMatricula): string {
             return `Matrícula suspendida por: ${estado.motivoSuspension}`;
         case "FINALIZADA":
             return `Matrícula finalizada con nota media: ${estado.notaMedia}`;
+        default:
+            const casoNoManejado: never = estado;
+            throw new Error(`Estado de matrícula no manejado: ${JSON.stringify(casoNoManejado)}`);
     }
 }
